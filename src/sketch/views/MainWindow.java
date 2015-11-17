@@ -7,11 +7,15 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import sketch.controllers.MainWindowController;
+
 /**
  * This class represents the main JFrame for the sketch application.
  */
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
+	/* ActionListener for menu items */
+	MainWindowController controller = new MainWindowController();
 	
 	public MainWindow(String title, int frameWidth, int frameHeight) {
 		// Configure frame
@@ -41,27 +45,33 @@ public class MainWindow extends JFrame {
 		JMenuItem menuItem;
 		
 		menuItem = new JMenuItem("New...");
+		menuItem.addActionListener(controller);
 		menu.add(menuItem);
 		
 		menuItem = new JMenuItem("Open...");
+		menuItem.addActionListener(controller);
 		menu.add(menuItem);
 		
 		menu.addSeparator();
 		
 		menuItem = new JMenuItem("Save");
+		menuItem.addActionListener(controller);
 		menu.add(menuItem);
 		
 		menuItem = new JMenuItem("Discard");
+		menuItem.addActionListener(controller);
 		menu.add(menuItem);
 		
 		menu.addSeparator();
 
 		menuItem = new JMenuItem("About");
+		menuItem.addActionListener(controller);
 		menu.add(menuItem);
 		
 		menu.addSeparator();
 		
 		menuItem = new JMenuItem("Exit");
+		menuItem.addActionListener(controller);
 		menu.add(menuItem);
 		
 		menuBar.add(menu);
