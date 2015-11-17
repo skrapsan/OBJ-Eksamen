@@ -41,6 +41,10 @@ public class MainWindowController implements ActionListener {
 			case "Exit": 
 				System.out.println("Menu item pressed: Exit");
 				break;
+				
+			default:
+				System.out.println("Default reached in switch-statement in MainWindowController!! :(");
+				break;
 		}
 		
 	}
