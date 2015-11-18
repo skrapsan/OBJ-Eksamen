@@ -62,29 +62,41 @@ public class MainWindowController implements ActionListener {
 				break; // -- end of NEW --
 				
 				
-				/*
-				 * MenuItem: OPEN
-				 * Present user with list of saved sketches.
-				 */
+			/*
+			 * MenuItem: OPEN
+			 * Present user with list of saved sketches.
+			 */
 			case "Open...": 
-				// Show list.
-				break;
 				
+				break; // -- end of OPEN --
+			
+			/*
+			 * MenuItem: SAVE
+			 */	
 			case "Save": 
 				System.out.println("Menu item pressed: Save");
-				break;
-				
+				break; // -- end of SAVE --
+			
+			/*
+			 * MenuItem: DISCARD
+			 */	
 			case "Discard": 
 				System.out.println("Menu item pressed: Discard");
-				break;
-				
+				break; // -- end of DISCARD --
+			
+			/*
+			 * MenuItem: ABOUT
+			 */	
 			case "About": 
 				System.out.println("Menu item pressed: About");
-				break;
+				break; // -- end of ABOUT --
 				
+			/*
+			 * MenuItem: EXIT
+			 */	
 			case "Exit": 
 				System.out.println("Menu item pressed: Exit");
-				break;
+				break; // -- end of EXIT --
 				
 			default:
 				System.out.println("Default reached in switch-statement in MainWindowController!! :(");
