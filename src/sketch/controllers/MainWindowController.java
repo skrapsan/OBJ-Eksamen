@@ -40,7 +40,7 @@ public class MainWindowController implements ActionListener {
 					sketchName = JOptionPane.showInputDialog(	frame, 
 																"Valid chars: a-z, 0-9. Max 16 long.",
 																"Enter name of new sketch",
-																JOptionPane.PLAIN_MESSAGE	);
+																JOptionPane.PLAIN_MESSAGE);
 					
 					// Validate the name name
 					validName = isValidName(sketchName);
@@ -49,25 +49,35 @@ public class MainWindowController implements ActionListener {
 					if(validName == false && sketchName == null) {
 						// If not, user closed the window. Terminate the loop.
 						break;
-					} else {
+					} else if (validName == false && sketchName != null) {
 						// User entered something, inform him of invalid name.
 						JOptionPane.showMessageDialog(	frame,
 														"Please enter a valid name!",
 														"Invalid name",
-														JOptionPane.WARNING_MESSAGE	);
+														JOptionPane.WARNING_MESSAGE);
 					}
 					
 				} while(validName == false && sketchName != null);
 				
 				break; // -- end of NEW --
 				
-				
 			/*
 			 * MenuItem: OPEN
 			 * Present user with list of saved sketches.
 			 */
 			case "Open...": 
-				
+				String[] savedSketches = { "Lel", "lol", "rofl", "lmao", "sauce" };
+				String selectedSketch = null;
+																
+				selectedSketch = (String) JOptionPane.showInputDialog(	frame, 
+																		"Select sketch to open:",
+																		"Open sketch...",
+																		JOptionPane.PLAIN_MESSAGE,
+																		null,
+																		savedSketches,
+																		savedSketches[0]);
+					
+				System.out.println(selectedSketch);
 				break; // -- end of OPEN --
 			
 			/*
@@ -119,10 +129,7 @@ public class MainWindowController implements ActionListener {
 	 * @return boolean returns true if the name is valid, false otherwise.
 	 */
 	private boolean isValidName(String name) {
-		if(name == null || name == "") {
-			return false;
-		}
-		else if (name.length() > 16) {
+		if(name == null || name == "" || name.length() > 16) {
 			return false;
 		}
 		
