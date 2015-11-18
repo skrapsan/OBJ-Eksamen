@@ -15,7 +15,7 @@ import sketch.controllers.MainWindowController;
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 	/* ActionListener for menu items */
-	MainWindowController controller = new MainWindowController();
+	MainWindowController controller = new MainWindowController(this);
 	
 	public MainWindow(String title, int frameWidth, int frameHeight) {
 		// Configure frame

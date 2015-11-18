@@ -2,14 +2,21 @@ package sketch.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
+
+import javax.swing.JOptionPane;
+
+import sketch.views.MainWindow;
 
 /**
  * Controller class for MainWindow frame.
  */
 public class MainWindowController implements ActionListener {
-
-	public MainWindowController() {
-		
+	
+	private MainWindow frame; // Reference to MainWindow.
+	
+	public MainWindowController(MainWindow frame) {
+		this.frame = frame;
 	}
 
 	/**
@@ -18,12 +25,49 @@ public class MainWindowController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		switch(event.getActionCommand()) {
-			case "New...": 
-				System.out.println("Menu item pressed: New...");
-				break;
+		
+			/* 
+			 * MenuItem: NEW
+			 * Present the user with an input dialog.
+			 * Validate and save entered name.
+			 */
+			case "New...":
+				String sketchName = null;
+				boolean validName = false;
+						
+				do {
+					// Prompt user for new sketch name.
+					sketchName = JOptionPane.showInputDialog(	frame, 
+																"Valid chars: a-z, 0-9. Max 16 long.",
+																"Enter name of new sketch",
+																JOptionPane.PLAIN_MESSAGE	);
+					
+					// Validate the name name
+					validName = isValidName(sketchName);
+					
+					// If name is not valid, check if anything was entered.
+					if(validName == false && sketchName == null) {
+						// If not, user closed the window. Terminate the loop.
+						break;
+					} else {
+						// User entered something, inform him of invalid name.
+						JOptionPane.showMessageDialog(	frame,
+														"Please enter a valid name!",
+														"Invalid name",
+														JOptionPane.WARNING_MESSAGE	);
+					}
+					
+				} while(validName == false && sketchName != null);
 				
+				break; // -- end of NEW --
+				
+				
+				/*
+				 * MenuItem: OPEN
+				 * Present user with list of saved sketches.
+				 */
 			case "Open...": 
-				System.out.println("Menu item pressed: Open...");
+				// Show list.
 				break;
 				
 			case "Save": 
@@ -47,6 +91,30 @@ public class MainWindowController implements ActionListener {
 				break;
 		}
 		
+	}
+	
+	/**
+	 * Checks if a string is a valid sketch name.
+	 * 
+	 * Validation rules:
+	 * - Alphabetical characters from 'A' to 'Z' (lower- or upper case) is OK.
+	 * - Numbers 0 to 9 is OK.
+	 * - No spaces allowed.
+	 * - Max 16 characters long.
+	 * - Name can't be null or empty.
+	 * 
+	 * @param name Name of the new sketch.
+	 * @return boolean returns true if the name is valid, false otherwise.
+	 */
+	private boolean isValidName(String name) {
+		if(name == null || name == "") {
+			return false;
+		}
+		else if (name.length() > 16) {
+			return false;
+		}
+		
+		return Pattern.matches("[a-zA-Z0-9]+", name);		
 	}
 	
 }
