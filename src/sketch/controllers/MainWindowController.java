@@ -13,7 +13,7 @@ import sketch.views.MainWindow;
  */
 public class MainWindowController implements ActionListener {
 	
-	private MainWindow frame; // Reference to MainWindow.
+	private MainWindow frame;
 	
 	public MainWindowController(MainWindow frame) {
 		this.frame = frame;
@@ -42,7 +42,7 @@ public class MainWindowController implements ActionListener {
 																"Enter name of new sketch",
 																JOptionPane.PLAIN_MESSAGE);
 					
-					// Validate the name name
+					// Check if name is valid.
 					validName = isValidName(sketchName);
 					
 					// If name is not valid, check if anything was entered.
@@ -125,7 +125,7 @@ public class MainWindowController implements ActionListener {
 	 * - Max 16 characters long.
 	 * - Name can't be null or empty.
 	 * 
-	 * @param name Name of the new sketch.
+	 * @param name String Name of the new sketch.
 	 * @return boolean returns true if the name is valid, false otherwise.
 	 */
 	private boolean isValidName(String name) {
