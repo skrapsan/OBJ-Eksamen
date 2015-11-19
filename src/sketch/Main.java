@@ -9,3 +9,5 @@ public class Main {
 	}
 
 }
+
+// her er en endring fra daniels
