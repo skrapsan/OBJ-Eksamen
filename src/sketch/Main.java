@@ -10,4 +10,8 @@ public class Main {
 
 }
 
+<<<<<<< HEAD
 // her er en endring fra daniels
+=======
+//PUll request fra MArius.
+>>>>>>> refs/remotes/Vecc/master
