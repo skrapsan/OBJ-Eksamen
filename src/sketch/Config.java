@@ -11,5 +11,5 @@ public final class Config {
 	
 	public static final int FRAME_WIDTH = 900;
 	public static final int FRAME_HEIGHT = 600;
-	
+	// endring fra alex
 }
