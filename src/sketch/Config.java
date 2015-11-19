@@ -13,3 +13,4 @@ public final class Config {
 	public static final int FRAME_HEIGHT = 600;
 	
 }
+// se om dette går da.
